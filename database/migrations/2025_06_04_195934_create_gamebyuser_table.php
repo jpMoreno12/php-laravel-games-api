@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('gamebyuser', function (Blueprint $table) {
             $table->integer('user_id');
-            $table->foreign('game_id')->references('id')->on('users');
+            $table->integer('game_id');
         });
     }
 
