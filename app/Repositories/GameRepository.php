@@ -21,12 +21,12 @@ class GameRepository implements IGameContract
 
     public function findGame(int $id)
     {
-        return $this->game->find($id);
+        return $this->game->craate($id);
     }
 
     public function findAllGames()
     {
-        $this->game->all();
+        return $this->game->all();
     }
 
     public function updateGame(int $id, array $data)

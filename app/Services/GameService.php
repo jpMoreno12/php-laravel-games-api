@@ -31,4 +31,19 @@ class GameService
        $game = $this->gameRepository->findAllGames();
        return $game;
     }
+
+    public function findDataService(int $id)
+    {
+        return $this->gameRepository->findGame($id);
+    }
+
+    public function updateGameService(int $id, array $data)
+    {
+       return $this->gameRepository->updateGame($id, $data);
+    }
+
+    public function deleteGameService(int $id)
+    {
+      return $this->gameRepository->deleteGame($id);
+    }
 }
