@@ -16,7 +16,7 @@ class GameRepository implements IGameContract
 
     public function createGame(array $data)
     {
-        return $this->game->create($data);
+         return $this->game->create($data);
     }
 
     public function findGame(int $id)
