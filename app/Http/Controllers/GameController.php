@@ -8,29 +8,29 @@ use App\Http\Requests\UpdatePutRequest;
 
 class GameController extends Controller
 {
-    protected GameService $gameContoller;
+    protected GameService $gameController;
 
-    public function __construct(GameService $gameContoller)
+    public function __construct(GameService $gameController)
     {
-        $this->gameContoller = $gameContoller;
+        $this->gameController = $gameController;
     }
 
     public function index()
     {
-        return $this->gameContoller->findAllDataService();
+        return $this->gameController->findAllDataService();
     }
 
     public function store(StorePostRequest $request)
     {
         $data = $request->validated();
         
-        $game = $this->gameContoller->createDataService($data, 2121212122);
+        $game = $this->gameController->createDataService($data, $request->user()->id);
         
         return response()->json($game, 201);
     }
     public function show($id)
     {
-        $game = $this->gameContoller->findDataService($id);
+        $game = $this->gameController->findDataService($id);
 
         return $game
             ? response()->json($game)
@@ -40,16 +40,16 @@ class GameController extends Controller
     public function update(UpdatePutRequest $request, $id)
     {
         $data = $request->validated();
-        $updated = $this->gameContoller->updateGameService($id, $data);
+        $updated = $this->gameController->updateGameService($id, $data);
 
         return $updated
             ? response()->json($updated)
-            : response()->json(['messege'=> 'Jogo não encontrado'], 404);
+            : response()->json(['message'=> 'Jogo não encontrado'], 404);
     }
 
     public function destroy($id)
     {
-        return $this->gameContoller->deleteGameService($id)
+        return $this->gameController->deleteGameService($id)
         ? response()->json(['message' => 'Jogo excluído com sucesso'])
         : response()->json(['message' => 'Jogo não encontrado'], 404);
     }
