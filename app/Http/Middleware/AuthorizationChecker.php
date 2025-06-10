@@ -18,14 +18,16 @@ class AuthorizationChecker
     {
         $token = $request->bearerToken();
 
-        $data = Http::withToken($token)->get('http://127.0.0.1:8000/api/user/check');
+        $data = Http::withToken($token)->get('http://127.0.0.1:8001/api/getPermissions');
+        $permissions = $data->json()[0]['permissions'];
 
         if ($data->failed()){
             return response()->json(['erro' => 'Erro inesperado'], 
             $data->status());
         }
 
-        dd($request->merge($data->json()));
+        $request->merge(['permissions' => $permissions]);
+
 
         return $next($request);
     }
