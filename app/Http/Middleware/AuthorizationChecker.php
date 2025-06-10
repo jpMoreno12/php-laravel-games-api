@@ -18,7 +18,7 @@ class AuthorizationChecker
     {
         $token = $request->bearerToken();
 
-        $data = Http::withToken($token)->get('http://127.0.0.1:8001/api/getPermissions');
+        $data = Http::withToken($token)->get(env('AUTHORIZATHOR').'/api/getPermissions');
 
         $permissions = $data->json()[0]['permissions'];
 
