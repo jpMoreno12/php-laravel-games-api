@@ -17,7 +17,7 @@ class Permissions
     public function handle(Request $request, Closure $next): Response
     {
         $routeName = Route::currentRouteName();
-        $permissions = $request->auth()->get('permissions');
+        $permissions = $request['permissions'];
 
         if(!in_array($routeName, $permissions)) {
             return response()->json(['erro' => 'Não tem permissões']);
