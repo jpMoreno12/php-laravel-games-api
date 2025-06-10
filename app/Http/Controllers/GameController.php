@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Services\GameService;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePutRequest;
-
 class GameController extends Controller
 {
     protected GameService $gameController;
@@ -23,8 +22,8 @@ class GameController extends Controller
     public function store(StorePostRequest $request)
     {
         $data = $request->validated();
-        
-        $game = $this->gameController->createDataService($data, $request->user()->id);
+      
+        $game = $this->gameController->createDataService($data, $request->header('HeaderX'));
         
         return response()->json($game, 201);
     }

@@ -22,6 +22,7 @@ class Permissions
         if(!in_array($routeName, $permissions)) {
             return response()->json(['erro' => 'Não tem permissões']);
         }
+        
         return $next($request);
     }
 }

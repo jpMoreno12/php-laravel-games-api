@@ -18,7 +18,7 @@ class AuthenticatorChecker
     {
         $token = $request->bearerToken();
 
-        $data = Http::withToken($token)->get('http://127.0.0.1:8000/api/user/check');
+        $data = Http::withToken($token)->get('http://127.0.0.1:8002/api/user/check');
 
         if ($data->failed()){
             return response()->json(['erro' => 'Token inválido'],

@@ -18,9 +18,9 @@ class GameService
     public function createDataService(array $data, int $userId) 
     {
         $game = $this->gameRepository->createGame($data);
-        DB::table('gamesbyuser')->insert([
+        DB::table('gamebyuser')->insert([
             'user_id' => $userId,
-            'game' => $game->id,
+            'game_id' => $game->id,
         ]);
 
         return $game;
