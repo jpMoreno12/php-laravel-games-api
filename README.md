@@ -56,6 +56,91 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+## Getting Started 
+
+### Prerequisites
+
+- PHP **8.2+**
+
+- [Composer](https://getcomposer.org/)
+
+- Laravel **12++**
+
+- Postman (or similar API client)
+
+- A valid OAuth2 Bearer Token
+
+## Installation
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+Configure your database and services in the .env file
+php artisan migrate
+```
+## Running the server
+
+```bash
+php artisan serve
+```
+
+## Authentication
+
+### All routes require authentication using a Bearer Token in the request header:
+
+```bash
+Authorization: Bearer {your_token}
+```
+
+## Environment Configuration
+
+### To enable authentication and authorization using external services, define the following variables in both .env and .env.example:
+
+```bash
+AUTHENTICATOR="http://127.0.0.1:8000"
+AUTHORIZATHOR="http://127.0.0.1:8001"
+```
+- **AUTHENTICATOR:** Validates the Bearer token and returns user info.
+- **AUTHORIZATHOR:** Returns the user’s permissions for accessing specific routes.
+
+##  API Endpoints
+
+| Method     | Endpoint      | Description       | Request Body                                                          | Success Response                                                                                | Error Response                                             |
+| ---------- | ------------- | ----------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| **GET**    | `/games`      | List all games    | —                                                                     | `200 OK`<br>`json [{ "id": 1, "name": "Game Title", "category": "Action", "year": 2020 }] `     | —                                                          |
+| **POST**   | `/games`      | Create a new game | `json { "name": "New Game", "category": "Adventure", "year": 2023 } ` | `201 Created`<br>`json { "id": 2, "name": "New Game", "category": "Adventure", "year": 2023 } ` | —                                                          |
+| **GET**    | `/games/{id}` | Get game by ID    | —                                                                     | `200 OK`<br>`json { "id": 1, "name": "Game Title", "category": "Action", "year": 2020 } `       | `404 Not Found`<br>`json { "message": "Game not found" } ` |
+| **PUT**    | `/games/{id}` | Update a game     | `json { "name": "Updated Title", "category": "RPG", "year": 2024 } `  | `200 OK`<br>`json { "id": 1, "name": "Updated Title", "category": "RPG", "year": 2024 } `       | `404 Not Found`<br>`json { "message": "Game not found" } ` |
+| **DELETE** | `/games/{id}` | Delete a game     | —                                                                     | `200 OK`<br>`json { "message": "Game successfully deleted" } `                                  | `404 Not Found`<br>`json { "message": "Game not found" } ` |
+
+### Middleware and Security
+
+## This project uses custom middleware to secure all requests:
+
+- **Authenticator** – Verifies the validity of the Bearer token.
+
+- **Authorizator** – Fetches route-based permissions from an external service.
+
+- **Permission Checker** – Ensures the user has permission to access the current route.
+
+## Possible Middleware Responses
+
+```bash
+{
+  "erro": "Invalid token"
+}
+```
+```bash
+{
+  "erro": "Unexpected error"
+}
+```
+```bash
+{
+  "erro": "Permission denied"
+}
+```
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
