@@ -23,8 +23,7 @@ class AuthorizationChecker
         $permissions = $data->json()[0]['permissions'];
 
         if ($data->failed()){
-            return response()->json(['erro' => 'Erro inesperado'], 
-            $data->status());
+            return response()->json(['error' => 'Unexpected error'], 502);
         }
 
         $request->headers->set('HeaderX', $request['id']);

@@ -33,7 +33,7 @@ class GameController extends Controller
 
         return $game
             ? response()->json($game)
-            : response()->json(['message'=> 'Jogo não encontrado'], 404);
+            : response()->json(['message'=> 'Game not found'], 404);
     }
 
     public function update(UpdatePutRequest $request, $id)
@@ -43,13 +43,13 @@ class GameController extends Controller
 
         return $updated
             ? response()->json($updated)
-            : response()->json(['message'=> 'Jogo não encontrado'], 404);
+            : response()->json(['message'=> 'Game not found'], 404);
     }
 
     public function destroy($id)
     {
         return $this->gameController->deleteGameService($id)
-        ? response()->json(['message' => 'Jogo excluído com sucesso'])
-        : response()->json(['message' => 'Jogo não encontrado'], 404);
+        ? response()->json(['message' => 'Game successfully deleted'])
+        : response()->json(['message' => 'Game not found'], 404);
     }
 }

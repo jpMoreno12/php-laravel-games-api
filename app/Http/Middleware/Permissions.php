@@ -20,7 +20,7 @@ class Permissions
         $permissions = $request['permissions'];
 
         if(!in_array($routeName, $permissions)) {
-            return response()->json(['erro' => 'Não tem permissões']);
+            return response()->json(['error' => 'Permission denied'], 403);
         }
         
         return $next($request);

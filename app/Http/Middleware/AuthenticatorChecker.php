@@ -21,8 +21,7 @@ class AuthenticatorChecker
         $data = Http::withToken($token)->get(env('AUTHENTICATOR').'/api/user/check');
 
         if ($data->failed()){
-            return response()->json(['erro' => 'Token inválido'],
-            $data->status());
+            return response()->json(['error' => 'Invalid token'], 401);
         }
 
         $request->merge($data->json());

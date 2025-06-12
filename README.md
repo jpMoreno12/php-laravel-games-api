@@ -1,73 +1,11 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
 ## Getting Started 
 
 ### Prerequisites
 
 - PHP **8.2+**
-
 - [Composer](https://getcomposer.org/)
-
-- Laravel **12++**
-
+- Laravel **12+**
 - Postman (or similar API client)
-
 - A valid OAuth2 Bearer Token
 
 ## Installation
@@ -76,9 +14,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 composer install
 cp .env.example .env
 php artisan key:generate
-Configure your database and services in the .env file
 php artisan migrate
 ```
+
 ## Running the server
 
 ```bash
@@ -89,58 +27,187 @@ php artisan serve
 
 ### All routes require authentication using a Bearer Token in the request header:
 
-```bash
+```http
 Authorization: Bearer {your_token}
 ```
 
 ## Environment Configuration
 
-### To enable authentication and authorization using external services, define the following variables in both .env and .env.example:
+### To enable authentication and authorization using external services, define the following variables in both `.env` and `.env.example`:
 
-```bash
+```env
 AUTHENTICATOR="http://127.0.0.1:8000"
 AUTHORIZATHOR="http://127.0.0.1:8001"
 ```
+
 - **AUTHENTICATOR:** Validates the Bearer token and returns user info.
 - **AUTHORIZATHOR:** Returns the user’s permissions for accessing specific routes.
 
-##  API Endpoints
+## API Endpoints
 
-| Method     | Endpoint      | Description       | Request Body                                                          | Success Response                                                                                | Error Response                                             |
-| ---------- | ------------- | ----------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| **GET**    | `/games`      | List all games    | —                                                                     | `200 OK`<br>`json [{ "id": 1, "name": "Game Title", "category": "Action", "year": 2020 }] `     | —                                                          |
-| **POST**   | `/games`      | Create a new game | `json { "name": "New Game", "category": "Adventure", "year": 2023 } ` | `201 Created`<br>`json { "id": 2, "name": "New Game", "category": "Adventure", "year": 2023 } ` | —                                                          |
-| **GET**    | `/games/{id}` | Get game by ID    | —                                                                     | `200 OK`<br>`json { "id": 1, "name": "Game Title", "category": "Action", "year": 2020 } `       | `404 Not Found`<br>`json { "message": "Game not found" } ` |
-| **PUT**    | `/games/{id}` | Update a game     | `json { "name": "Updated Title", "category": "RPG", "year": 2024 } `  | `200 OK`<br>`json { "id": 1, "name": "Updated Title", "category": "RPG", "year": 2024 } `       | `404 Not Found`<br>`json { "message": "Game not found" } ` |
-| **DELETE** | `/games/{id}` | Delete a game     | —                                                                     | `200 OK`<br>`json { "message": "Game successfully deleted" } `                                  | `404 Not Found`<br>`json { "message": "Game not found" } ` |
+### **GET** /games
+**Retrieve all games.**
 
-### Middleware and Security
+- **Request Body:** none
+- **Response:**
 
-## This project uses custom middleware to secure all requests:
+```json
+[
+  {
+    "id": 1,
+    "name": "Game Title",
+    "category": "Category",
+    "year": 2020
+  }
+]
+```
+
+---
+
+### **POST** /games
+**Create a new game.**
+
+- **Request Header:**
+  - **HeaderX:** expected_value
+
+- **Request Body:**
+
+```json
+{
+  "name": "New Game",
+  "category": "Adventure",
+  "year": 2023
+}
+```
+
+- **Response:**
+
+```json
+{
+  "id": 2,
+  "name": "New Game",
+  "category": "Adventure",
+  "year": 2023
+}
+```
+
+---
+
+### **GET** /games/{id}
+**Retrieve a specific game by ID.**
+
+- **Success Response:**
+
+```json
+{
+  "id": 1,
+  "name": "Game Title",
+  "category": "Action",
+  "year": 2020
+}
+```
+
+- **Error Response:**
+
+```json
+{
+  "message": "Game not found"
+}
+```
+
+---
+
+### **PUT** /games/{id}
+**Update an existing game.**
+
+- **Request Body:**
+
+```json
+{
+  "name": "Updated Title",
+  "category": "RPG",
+  "year": 2024
+}
+```
+
+- **Success Response:**
+
+```json
+{
+  "id": 1,
+  "name": "Updated Title",
+  "category": "RPG",
+  "year": 2024
+}
+```
+
+- **Error Response:**
+
+```json
+{
+  "message": "Game not found"
+}
+```
+
+---
+
+### **DELETE** /games/{id}
+**Delete a game by ID.**
+
+- **Success Response:**
+
+```json
+{
+  "message": "Game successfully deleted"
+}
+```
+
+- **Error Response:**
+
+```json
+{
+  "message": "Game not found"
+}
+```
+
+---
+
+## Middleware and Security
+
+### This project uses custom middleware to secure all requests:
 
 - **Authenticator** – Verifies the validity of the Bearer token.
-
 - **Authorizator** – Fetches route-based permissions from an external service.
-
 - **Permission Checker** – Ensures the user has permission to access the current route.
 
-## Possible Middleware Responses
+### Possible Middleware Responses
 
-```bash
+```json
 {
-  "erro": "Invalid token"
+  "error": "Invalid token"
 }
 ```
-```bash
+
+```json
 {
-  "erro": "Unexpected error"
+  "error": "Unexpected error"
 }
 ```
-```bash
+
+```json
 {
-  "erro": "Permission denied"
+  "error": "Permission denied"
 }
 ```
+
+---
+
+### Architecture Diagram
+
+![Architecture Diagram](docs/backend.drawio.png)
+
+---
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
