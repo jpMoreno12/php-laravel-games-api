@@ -24,8 +24,43 @@ php artisan migrate
 php artisan serve
 ```
 
-## Authentication
+## Database Tables
 
+### `permissions_by_user`
+Pivot table to associate users with permissions.
+
+| Column         | Type     | Description                              |
+|----------------|----------|------------------------------------------|
+| `id`           | BIGINT   | Primary key                              |
+| `user_id`      | BIGINT   | Foreign key → `users.id`                 |
+| `permission_id`| BIGINT   | Foreign key → `permissions.id`           |
+
+---
+
+### `games`
+Stores information about registered games.
+
+| Column   | Type     | Description                 |
+|----------|----------|-----------------------------|
+| `id`     | BIGINT   | Primary key                 |
+| `name`   | STRING   | Game name                   |
+| `gender` | STRING   | Game genre                  |
+| `year`   | INTEGER  | Release year                |
+
+---
+
+### `game_by_user`
+Associates games with users.
+
+| Column    | Type   | Description              |
+| --------- | ------ | ------------------------ |
+| `id`      | BIGINT | Primary key              |
+| `user_id` | BIGINT | Foreign key → `users.id` |
+| `game_id` | BIGINT | Foreign key → `games.id` |
+
+---
+
+## Authentication
 ### All routes require authentication using a Bearer Token in the request header:
 
 ```http
@@ -223,6 +258,12 @@ Status: **403 Forbidden**
 ### Architecture Diagram
 
 ![Architecture Diagram](docs/backend.drawio.png)
+
+---
+
+### Postman Collection:
+
+[Download backend API collection](docs/backend_api.postman_collection.json)
 
 ---
 

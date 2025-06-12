@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "c3b1e7cb-076a-4eea-9d08-7ce16f4e0e96",
+		"name": "backend_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45102057"
+	},
+	"item": [
+		{
+			"name": "backend",
+			"item": [
+				{
+					"name": "/api/games",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk3NWFjZC1kNzlhLTcxNzktYmM1Yy0wYTMwNzFjNDRlNDQiLCJqdGkiOiI4ZGZjMmZmNWFkOWJlMzlkYzQzYzk3ZmZiM2Q2NGVhYTdkMTg0Y2YyYjJhMDVhYjg0NjQ4MGM4NGRjNmVhMTc4MDFhNzg2ODkyNmNjZTM4NyIsImlhdCI6MTc0OTU3NTI4NC41NjYzNzcsIm5iZiI6MTc0OTU3NTI4NC41NjYzOCwiZXhwIjoxNzgxMTExMjgzLjc1MjMzNCwic3ViIjoiMSIsInNjb3BlcyI6W119.Qu9jYPkD01tiaGRfk34-htm-8bGMk9tje9Pdcc4RxhV3FZ58B5gCk9MBwEtefXTpcivCzBIGykvqXguk1b_KjWbDWN-6w0VFcTcxCtTiSdJvIpWLWwRQXaWPB36njbqtmBS4l4jEo7ugGZn4Il4qn6KqVYgdIe-M19BzThYN80vfDJL1wSY-86sYXK2SEpCgfZEFxy9p42VZOPbzy-ZlN5XRDYG_L8z7Dx8sEHzPyTTL2_Ri9PT-GRJSmpJluFO9EOpRLcqqsuZbEQ3fEYQCg3wt2cX9V-ub1IM8_2CBoVNJFMwO1RIc2nSWuIbq520sTB_4UB96BP-bTpqBNHCuuqYL_U2IoPg3HfpOZhUTvD5dPd4Y-sVheheQ852rCd9jp07GVNrL0-eWf_6rodSXqsVGWRkHwQlwqAIXUmsJOP16PvbSkrZyIys3lCla3hlo-OU1iS6P-vzBi10I4gmPpPG_iZu9L7Fsbvv1Qh05lR1oLNmfr7DdgQ22TIt9qKAth3qAcImExt1FCCP-j7e0HZeFm3d_RMxUeIiyvPWCMWfgvIAuLufRVtmxUCRpH--4784Le0X28UzfLqfXl0ppxVkhfsIAWTmlGKr60CNX4vzL5RBvj0qdnDuI1DreCGSUgp47vSx0zYEB1wwOiSi_vtTbMcIYikbl52SMTIDIIuY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Good of War\",\r\n    \"gender\": \"Fase\",\r\n    \"year\": 2053,\r\n    \"id\": 123\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/games",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk3NWFjZC1kNzlhLTcxNzktYmM1Yy0wYTMwNzFjNDRlNDQiLCJqdGkiOiI4ZGZjMmZmNWFkOWJlMzlkYzQzYzk3ZmZiM2Q2NGVhYTdkMTg0Y2YyYjJhMDVhYjg0NjQ4MGM4NGRjNmVhMTc4MDFhNzg2ODkyNmNjZTM4NyIsImlhdCI6MTc0OTU3NTI4NC41NjYzNzcsIm5iZiI6MTc0OTU3NTI4NC41NjYzOCwiZXhwIjoxNzgxMTExMjgzLjc1MjMzNCwic3ViIjoiMSIsInNjb3BlcyI6W119.Qu9jYPkD01tiaGRfk34-htm-8bGMk9tje9Pdcc4RxhV3FZ58B5gCk9MBwEtefXTpcivCzBIGykvqXguk1b_KjWbDWN-6w0VFcTcxCtTiSdJvIpWLWwRQXaWPB36njbqtmBS4l4jEo7ugGZn4Il4qn6KqVYgdIe-M19BzThYN80vfDJL1wSY-86sYXK2SEpCgfZEFxy9p42VZOPbzy-ZlN5XRDYG_L8z7Dx8sEHzPyTTL2_Ri9PT-GRJSmpJluFO9EOpRLcqqsuZbEQ3fEYQCg3wt2cX9V-ub1IM8_2CBoVNJFMwO1RIc2nSWuIbq520sTB_4UB96BP-bTpqBNHCuuqYL_U2IoPg3HfpOZhUTvD5dPd4Y-sVheheQ852rCd9jp07GVNrL0-eWf_6rodSXqsVGWRkHwQlwqAIXUmsJOP16PvbSkrZyIys3lCla3hlo-OU1iS6P-vzBi10I4gmPpPG_iZu9L7Fsbvv1Qh05lR1oLNmfr7DdgQ22TIt9qKAth3qAcImExt1FCCP-j7e0HZeFm3d_RMxUeIiyvPWCMWfgvIAuLufRVtmxUCRpH--4784Le0X28UzfLqfXl0ppxVkhfsIAWTmlGKr60CNX4vzL5RBvj0qdnDuI1DreCGSUgp47vSx0zYEB1wwOiSi_vtTbMcIYikbl52SMTIDIIuY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/games/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8001/api/games/id",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"games",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/games/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"gender\": \"\",\r\n    \"year\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8001/api/games/id",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"games",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/games/id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8001/api/games/id",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"games",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
