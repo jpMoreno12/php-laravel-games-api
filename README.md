@@ -1,3 +1,4 @@
+
 ## Getting Started 
 
 ### Prerequisites
@@ -45,11 +46,12 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 
 ## API Endpoints
 
-### **GET** /games
-**Retrieve all games.**
+### **GET** /games  
+Retrieve all games.
 
-- **Request Body:** none
-- **Response:**
+- **Request Body:** none  
+- **Response:**  
+Status: **200 OK**
 
 ```json
 [
@@ -64,10 +66,10 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 
 ---
 
-### **POST** /games
-**Create a new game.**
+### **POST** /games  
+Create a new game.
 
-- **Request Header:**
+- **Request Header:**  
   - **HeaderX:** expected_value
 
 - **Request Body:**
@@ -80,7 +82,8 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 }
 ```
 
-- **Response:**
+- **Response:**  
+Status: **201 Created**
 
 ```json
 {
@@ -93,10 +96,11 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 
 ---
 
-### **GET** /games/{id}
-**Retrieve a specific game by ID.**
+### **GET** /games/{id}  
+Retrieve a specific game by ID.
 
-- **Success Response:**
+- **Success Response:**  
+Status: **200 OK**
 
 ```json
 {
@@ -107,7 +111,8 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 }
 ```
 
-- **Error Response:**
+- **Error Response:**  
+Status: **404 Not Found**
 
 ```json
 {
@@ -117,8 +122,8 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 
 ---
 
-### **PUT** /games/{id}
-**Update an existing game.**
+### **PUT** /games/{id}  
+Update an existing game.
 
 - **Request Body:**
 
@@ -130,7 +135,8 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 }
 ```
 
-- **Success Response:**
+- **Success Response:**  
+Status: **200 OK**
 
 ```json
 {
@@ -141,7 +147,8 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 }
 ```
 
-- **Error Response:**
+- **Error Response:**  
+Status: **404 Not Found**
 
 ```json
 {
@@ -151,10 +158,11 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 
 ---
 
-### **DELETE** /games/{id}
-**Delete a game by ID.**
+### **DELETE** /games/{id}  
+Delete a game by ID.
 
-- **Success Response:**
+- **Success Response:**  
+Status: **200 OK**
 
 ```json
 {
@@ -162,7 +170,8 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 }
 ```
 
-- **Error Response:**
+- **Error Response:**  
+Status: **404 Not Found**
 
 ```json
 {
@@ -182,17 +191,26 @@ AUTHORIZATHOR="http://127.0.0.1:8001"
 
 ### Possible Middleware Responses
 
+- **Invalid Token**  
+Status: **401 Unauthorized**
+
 ```json
 {
   "error": "Invalid token"
 }
 ```
 
+- **Unexpected Error**  
+Status: **502 Bad Gateway**
+
 ```json
 {
   "error": "Unexpected error"
 }
 ```
+
+- **Permission Denied**  
+Status: **403 Forbidden**
 
 ```json
 {
